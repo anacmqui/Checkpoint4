@@ -9,7 +9,7 @@ app.layout =  html.Div(children=[
             dbc.Col(children = [
             dbc.Row([
                 html.Img(
-                    src = '/Users/anacarolinaquintino/Documents/GitHub/Checkpoint5/wine2.webp',style= {'width':'auto'}
+                    src = 'https://raw.githubusercontent.com/anacmqui/Checkpoint5/main/wine.png',#style= {'width':'auto'}
                 ),
             ], style= {'width':'100%'}
             ),
@@ -19,7 +19,9 @@ app.layout =  html.Div(children=[
                             "left": 0,
                             "bottom": 0,
                             "width": "25rem",
-                            "padding": "2rem 1rem",}
+                            "padding": "2rem 1rem",
+                            'font-size': '1.5rem',
+                            'font-weight': 'bold'}
                 ),
             html.Div([html.Div(
                 dcc.Link(
@@ -32,7 +34,8 @@ app.layout =  html.Div(children=[
                                 "padding": "2rem 1rem",
                                 'font-size': '1.2rem',
                                 'font-family': 'sans-serif',
-                                'line-height': '2.5rem'}
+                                'line-height': '2.5rem',
+                                'color':'#8B1A1A'}
                 )
             )
             for page in dash.page_registry.values()

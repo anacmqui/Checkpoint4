@@ -10,7 +10,7 @@ dash.register_page(__name__, path='/')
 layout  =  html.Div(children=[
             dbc.Row(children = [
             html.H1(
-                children = ['Avg overnight stays'], style={'textAlign':'center', "padding": "2rem 1rem"}
+                children = ['Which countries produce more wine?'], style={'textAlign':'center', "padding": "2rem 1rem"}
                 ), ]),
             ])
 
