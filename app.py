@@ -25,7 +25,7 @@ app.layout =  html.Div(children=[
                 ),
             html.Div([html.Div(
                 dcc.Link(
-                    f"{page['name']}?",# - {page['path']}", 
+                    f"{page['name']}",# - {page['path']}", 
                     href=page["relative_path"],
                     style={"top": 0,
                                 "left": 0,

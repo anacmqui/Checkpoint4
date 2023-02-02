@@ -16,6 +16,16 @@ df_total = pd.read_csv('https://raw.githubusercontent.com/anacmqui/Checkpoint5/m
 best_scores = df_total.sort_values(by='points', ascending=False).head(19)
 #best_scores[['country' , 'title', 'variety', 'year','points', 'price']]
 
+df_grape = df_total.groupby(['variety']).agg({'points' : 'mean', 'description':'count'}).reset_index().sort_values(by='description', ascending=False)
+df_grape_top = df_grape[df_grape['description']>100].sort_values(by='points', ascending=False)
+df_grape_top_15 = df_grape_top.head(15).reset_index()
+df_grape_top_15 = df_grape_top_15.rename(columns={'description':'count'}) 
+
+df_grape_n = df_grape.sort_values(by='points', ascending=False).head(15)
+df_grape_n = df_grape_n.rename(columns={'description':'count'}) 
+
+
+
 def world_wine(df = df_countries):
   return px.choropleth_mapbox(df_countries, geojson=world1, locations='country', color='count',
                            animation_frame="year",
@@ -31,6 +41,18 @@ def points_dist(df=df_total):
 
 def best_score(df=best_scores):
     return px.bar(best_scores, x='country', hover_data=["title", 'variety', 'year', 'price'])
+
+def best_grape15(df=df_grape_top_15):
+    fig = px.bar(df_grape_top_15, x='variety', y='points',hover_data=['count'])
+    fig.update_layout(yaxis=dict(range=[89,95.5]))
+    fig.update_xaxes(tickangle=45)
+    return fig
+
+def best_grapen(df=df_grape_n):
+    fig2 = px.bar(df_grape_n, x='variety', y='points',hover_data=['count'])
+    fig2.update_layout(yaxis=dict(range=[89,95.5]))
+    fig2.update_xaxes(tickangle=45)
+    return fig2
 
 layout  =  html.Div(children=[
             dbc.Row(children = [
@@ -48,6 +70,20 @@ layout  =  html.Div(children=[
                      children = ['Where are the wines with 100 points?'], style={'textAlign':'center', "padding": "2rem 1rem"}
                      ), ]),
             dbc.Row([dcc.Graph(figure=best_score()),]),
-            ])
+            
+            dbc.Row([
+                  dbc.Col([ 
+                    dbc.Row([html.H1('What are the grapes with best score?', style={'textAlign':'center', "padding": "2rem 1rem"}
+                        ),]),
+                     dbc.Row([dcc.Graph(figure=best_grapen())]), 
+                  ], width= 6),
+                  # dcc.Graph(figure=prevision_value()),
+                 dbc.Col([ 
+                    dbc.Row([html.H1('What are the top grapes with best score?', style={'textAlign':'center', "padding": "2rem 1rem"}
+                        ),]),
+                     dbc.Row([dcc.Graph(figure=best_grape15())]),
+                    ], width= 6),
+                 ]),
+              ])
 
 
