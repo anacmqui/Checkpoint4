@@ -40,7 +40,7 @@ app.layout =  html.Div(children=[
             )
             for page in dash.page_registry.values()
                     ]
-                ),], width= 2, style = {"background-color": "#E3E3E3", 'height':'1000000px'}, align='stretch'
+                ),], width= 2, style = {"background-color": "#FFC1C1", 'height':'1000000px'}, align='stretch'
             ),
             dbc.Col(children = [dash.page_container], width= 10)])
 ])
