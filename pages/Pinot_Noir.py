@@ -17,8 +17,6 @@ def pinot_noir_year(df=df_pinot_noir_year):
     fig.update_layout(xaxis = dict(tickmode = 'linear'))
     return fig
 
-wordcloud = Image.open("/Users/anacarolinaquintino/Documents/GitHub/Checkpoint5/wordmap_pinot.png")
-
 layout = html.Div(children=[
             dbc.Row(children = [
                     html.H1(
@@ -34,15 +32,21 @@ layout = html.Div(children=[
                 dbc.Col([], width=3),
                 ]),
             dbc.Row(children = [
-                    html.H1(
+                    html.H2(
                      children = ['Pinot Noir throughout the years'], style={'textAlign':'center', "padding": "2rem 1rem"}
                      ), 
                      ]),
             dbc.Row([dcc.Graph(figure=pinot_noir_year()),]),
             dbc.Row(children = [
-                    html.H1(
+                    html.H2(
                      children = ['How to describe Pinot Noir?'], style={'textAlign':'center', "padding": "2rem 1rem"}
                      ), 
                      ]),
-            dbc.Row([html.Img(src=wordcloud),]),
+            dbc.Row(
+                dbc.Col([], width=3),
+                dbc.Col([html.Img(src='https://raw.githubusercontent.com/anacmqui/Checkpoint5/main/wordmap_pinot.png',
+                            style= {'width':'30%', 'align':'center'})
+                        ]),
+                dbc.Col([], width=3),
+            ),
         ])
