@@ -50,7 +50,7 @@ def best_score(df=best_scores):
 
 def best_grape15(df=df_grape_top_15):
     fig = px.bar(df_grape_top_15, x='variety', y='points',hover_data=['count'])
-    fig.update_layout(yaxis=dict(range=[89,95.5]))
+    fig.update_layout(yaxis=dict(range=[89,91]))
     fig.update_xaxes(tickangle=45)
     fig.update_traces(marker_color='#8B1A1A', opacity=0.6)
     return fig
@@ -64,35 +64,36 @@ def best_grapen(df=df_grape_n):
 
 layout  =  html.Div(children=[
             dbc.Row(children = [
-                    html.H1(
+                    html.H2(
                      children = ['Which countries produce more wine?'], style={'textAlign':'center', "padding": "2rem 1rem"}
                      ), ]),
             dbc.Row([dcc.Graph(figure=world_wine()),]),
             dbc.Row([
                 dbc.Col([
-                    html.H1('What is the distribution of the score?', style={'textAlign':'center', "padding": "2rem 1rem"}
+                    html.H2('What is the distribution of the score?', style={'textAlign':'center', "padding": "2rem 1rem"}
                             ),
                      dcc.Graph(figure=points_dist()),
                      ], width=6),
-                dbc.Col([html.H1('Where are the wines with 100 points?', style={'textAlign':'center', "padding": "2rem 1rem"}
+                dbc.Col([html.H2('Where are the wines with 100 points?', style={'textAlign':'center', "padding": "2rem 1rem"}
                      ),
                      dcc.Graph(figure=best_score()), 
                      ], width=6),     
                     ]),
 
-            dbc.Row([
-                  dbc.Col([ 
-                    dbc.Row([html.H1('What are the grapes with best score?', style={'textAlign':'center', "padding": "2rem 1rem"}
-                        ),]),
-                     dbc.Row([dcc.Graph(figure=best_grapen())]), 
-                  ], width= 6),
+            #dbc.Row([
+                  #dbc.Col([ 
+                   # dbc.Row([html.H1('What are the grapes with best score?', style={'textAlign':'center', "padding": "2rem 1rem"}
+                    #    ),]),
+                     #dbc.Row([dcc.Graph(figure=best_grapen())]), 
+                  #], width= 6),
                   # dcc.Graph(figure=prevision_value()),
-                 dbc.Col([ 
-                    dbc.Row([html.H1('What are the top grapes with best score?', style={'textAlign':'center', "padding": "2rem 1rem"}
+                 #dbc.Col([ 
+                    dbc.Row([html.H2('What are the top grapes with best score?', style={'textAlign':'center', "padding": "2rem 1rem"}
                         ),]),
-                     dbc.Row([dcc.Graph(figure=best_grape15())]),
-                    ], width= 6),
+                     dbc.Row([dcc.Graph(figure=best_grape15())
+                     ]),
+                    #], width= 6),
                  ]),
-              ])
+             # ])
 
 

@@ -15,12 +15,13 @@ df_pinot_noir_year = pd.read_csv('https://raw.githubusercontent.com/anacmqui/Che
 def pinot_noir_year(df=df_pinot_noir_year):
     fig = px.line(df_pinot_noir_year, x='year', y='points', hover_data=['count'])
     fig.update_layout(xaxis = dict(tickmode = 'linear'))
+    fig.update_traces(line_color='#8B1A1A', opacity=0.6)
     return fig
 
 layout = html.Div(children=[
             dbc.Row(children = [
                     html.H1(
-                     children = ['Dive into Pinot Noir'], style={'textAlign':'center', "padding": "2rem 1rem"}
+                     children = ['Dive into Pinot Noir'], style={'textAlign':'center'}#, "padding": "2rem 1rem"}
                      ), 
                      ]),
             dbc.Row([
@@ -42,11 +43,11 @@ layout = html.Div(children=[
                      children = ['How to describe Pinot Noir?'], style={'textAlign':'center', "padding": "2rem 1rem"}
                      ), 
                      ]),
-            dbc.Row(
-                dbc.Col([], width=3),
+            dbc.Row([
+                dbc.Col([ ], width=3),
                 dbc.Col([html.Img(src='https://raw.githubusercontent.com/anacmqui/Checkpoint5/main/wordmap_pinot.png',
-                            style= {'width':'30%', 'align':'center'})
+                            style= {'width':'80%', 'align':'center'})
                         ]),
-                dbc.Col([], width=3),
-            ),
+                dbc.Col([ ], width=3),
+                    ]),
         ])
