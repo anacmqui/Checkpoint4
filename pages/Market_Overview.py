@@ -64,8 +64,12 @@ def best_grapen(df=df_grape_n):
 
 layout  =  html.Div(children=[
             dbc.Row(children = [
+                    html.H1(
+                     children = ['Wine Market Overview'], style={'textAlign':'center', "padding": "2rem 1rem", 'color':'#8B1A1A'}
+                     ), ]),
+            dbc.Row(children = [
                     html.H2(
-                     children = ['Which countries produce more wine?'], style={'textAlign':'center', "padding": "2rem 1rem"}
+                     children = ['Which countries produce more wine?'], style={'textAlign':'center'}
                      ), ]),
             dbc.Row([dcc.Graph(figure=world_wine()),]),
             dbc.Row([

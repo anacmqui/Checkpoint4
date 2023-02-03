@@ -21,7 +21,7 @@ def pinot_noir_year(df=df_pinot_noir_year):
 layout = html.Div(children=[
             dbc.Row(children = [
                     html.H1(
-                     children = ['Dive into Pinot Noir'], style={'textAlign':'center'}#, "padding": "2rem 1rem"}
+                     children = ['Dive into Pinot Noir'], style={'textAlign':'center', "padding": "2rem 1rem", 'color':'#8B1A1A'}
                      ), 
                      ]),
             dbc.Row([
